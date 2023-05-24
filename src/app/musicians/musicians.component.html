@@ -1,0 +1,53 @@
+<my-header></my-header>
+<h1>Музыканты</h1>
+<input
+  type="text"
+  [(ngModel)]="searchText"
+  (keyup.enter)="search()"
+  placeholder="Search"
+/>
+<button (click)="search()" (keyup.enter)="search()">Search</button>
+<button (click)="exitSearch()">Отмена</button>
+<div *ngIf="searchText">
+  <div>
+    <div>Фото</div>
+    <div>Никнейм</div>
+  </div>
+</div>
+<ul style="text-decoration: none">
+  <li
+    *ngFor="let musician of musicians; let i = index"
+    style="text-decoration: none"
+  >
+    <div (click)="selectMusician(i)">
+      <div style="margin-top: 10px">
+        <img
+          [src]="getCoverUrl(musician.musicianCover)"
+          alt="Musician Cover"
+          style="text-decoration: none"
+        />
+        <h3 style="display: flex">
+          <div>id:{{ musician.id }}</div>
+          <div style="margin-left: 20px">{{ musician.nickname }}</div>
+        </h3>
+      </div>
+    </div>
+  </li>
+</ul>
+
+<div *ngIf="selectedMusician">
+  <button (click)="selectedMusician = null">Назад</button>
+  <img
+    [src]="getCoverUrl(selectedMusician?.musicianCover)"
+    alt="Musician Cover"
+  />
+  <h2>
+    Выбранный мзуыкант:
+    <div>
+      {{ selectedMusician.nickname }}
+    </div>
+  </h2>
+  <button style="color: red" (click)="DeleteMusician()">
+    Удалить музыканта
+  </button>
+</div>

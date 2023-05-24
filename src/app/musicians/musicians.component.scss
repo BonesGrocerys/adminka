@@ -1,0 +1,14 @@
+img {
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
+}
+div {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+div:hover {
+  background-color: rgb(240, 240, 240);
+}

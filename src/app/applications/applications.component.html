@@ -1,0 +1,21 @@
+<my-header></my-header>
+<h1>Заявки</h1>
+
+<div *ngFor="let musician of musicians; let i = index">
+  <div (click)="selectMusician(i)">
+    <h2>{{ musician.nickname }}</h2>
+  </div>
+</div>
+<div *ngIf="selectedMusician">
+  <button (click)="selectedMusician = null">Назад</button>
+  <img
+    [src]="getCoverUrl(selectedMusician?.musicianCover)"
+    alt="Musician Cover"
+  />
+  <h2>
+    Выбранная заявка: {{ selectedMusician.nickname }}
+
+    <button (click)="ApplyApplication()">Одобрить</button>
+    <button (click)="RejectApplication()">Отклонить</button>
+  </h2>
+</div>

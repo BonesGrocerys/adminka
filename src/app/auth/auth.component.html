@@ -1,0 +1,23 @@
+<my-header></my-header>
+<p>AUTH</p>
+<form>
+  <div>
+    <label for="username">Login:</label>
+    <input
+      [(ngModel)]="user.username"
+      placeholder="Enter your name"
+      [ngModelOptions]="{ standalone: true }"
+    />
+    <p>Your name is {{ user.username }}</p>
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input
+      [(ngModel)]="user.password"
+      placeholder="Password"
+      [ngModelOptions]="{ standalone: true }"
+    />
+    <p>{{ user.password }}</p>
+  </div>
+  <button type="submit" (click)="onSubmit()">password</button>
+</form>
