@@ -1,23 +1,24 @@
 <my-header></my-header>
-<p>AUTH</p>
-<form>
-  <div>
-    <label for="username">Login:</label>
-    <input
-      [(ngModel)]="user.username"
-      placeholder="Enter your name"
-      [ngModelOptions]="{ standalone: true }"
-    />
-    <p>Your name is {{ user.username }}</p>
-  </div>
-  <div>
-    <label for="password">Password:</label>
-    <input
-      [(ngModel)]="user.password"
-      placeholder="Password"
-      [ngModelOptions]="{ standalone: true }"
-    />
-    <p>{{ user.password }}</p>
-  </div>
-  <button type="submit" (click)="onSubmit()">password</button>
-</form>
+<div>
+  <h1>Авторизация</h1>
+  <form>
+    <div>
+      <label for="username">Login:</label>
+      <input
+        [(ngModel)]="user.username"
+        placeholder="Enter your name"
+        [ngModelOptions]="{ standalone: true }"
+      />
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input
+        [(ngModel)]="user.password"
+        placeholder="Password"
+        [ngModelOptions]="{ standalone: true }"
+      />
+    </div>
+    <button type="submit" (click)="onSubmit()">Войти</button>
+    <div *ngIf="validation" style="color: red">{{ error }}</div>
+  </form>
+</div>

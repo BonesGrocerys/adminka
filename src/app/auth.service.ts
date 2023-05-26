@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   currentUser: User | null | undefined;
+  error: string | null | undefined;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -28,8 +29,10 @@ export class AuthService {
         tap((response: any) => console.log(response)),
         map((response: any) => {
           // Обработка ответа от сервера
-          this.currentUser = response.result.person;
 
+          response?.result?.person?.roleId === 2
+            ? (this.currentUser = response.result.person)
+            : (this.currentUser = null);
           return {
             success: true,
             message: 'Login successful',
@@ -39,6 +42,9 @@ export class AuthService {
         }),
         catchError((error) => {
           console.log(error);
+          this.error = error.error.message;
+          console.log(this.error);
+
           return of({
             success: false,
             message: 'Login failed',

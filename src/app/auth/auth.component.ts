@@ -11,6 +11,8 @@ import { User } from '../Interfaces/User';
 })
 export class AuthComponent {
   user: User = { username: '', password: '' };
+  error: string | null | undefined;
+  validation!: boolean;
   constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit() {
@@ -21,7 +23,9 @@ export class AuthComponent {
         if (result.success) {
           this.router.navigate(['/home']);
         } else {
-          // Обработка ошибки авторизации
+          this.validation = this.authService.error
+            ? ((this.error = this.authService.error), true)
+            : false;
         }
       });
   }

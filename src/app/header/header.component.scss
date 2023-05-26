@@ -1,3 +1,7 @@
+.logo {
+  padding-top: 10px;
+}
+
 div {
   display: flex;
   background-color: black;
@@ -7,13 +11,18 @@ div {
   div {
     color: white;
     margin-left: 20px;
-    margin-right: 20px;
   }
   button {
-    background-color: #e3e3e3;
+    border: 0;
+    background-color: #3e3e3e;
+    color: #ffffff;
     padding: 0px 15px;
     min-width: 75px;
     text-align: center;
     cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #222222;
   }
 }

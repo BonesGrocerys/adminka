@@ -1,15 +1,19 @@
 <my-header></my-header>
 <h1>Музыканты</h1>
-<input
-  type="text"
-  [(ngModel)]="searchText"
-  (keyup.enter)="search()"
-  placeholder="Search"
-/>
-<button (click)="search()" (keyup.enter)="search()">Search</button>
-<button (click)="exitSearch()">Отмена</button>
-<div *ngIf="searchText">
+<div class="search-input">
+  <input
+    type="text"
+    [(ngModel)]="searchText"
+    (keyup.enter)="search()"
+    placeholder="Search"
+  />
   <div>
+    <button (click)="search()" (keyup.enter)="search()">Search</button>
+    <button (click)="exitSearch()">Отмена</button>
+  </div>
+</div>
+<div *ngIf="searchText">
+  <div class="seach-content">
     <div>Фото</div>
     <div>Никнейм</div>
   </div>
@@ -20,7 +24,7 @@
     style="text-decoration: none"
   >
     <div (click)="selectMusician(i)">
-      <div style="margin-top: 10px">
+      <div style="margin-top: 10px" class="seach-content">
         <img
           [src]="getCoverUrl(musician.musicianCover)"
           alt="Musician Cover"
