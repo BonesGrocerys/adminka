@@ -5,12 +5,25 @@ import { AuthComponent } from './auth/auth.component';
 import { HomeComponent } from './home/home.component';
 import { MusiciansComponent } from './musicians/musicians.component';
 import { ApplicationsComponent } from './applications/applications.component';
+import { TracksComponent } from './tracks/tracks.component';
 
 const routes: Routes = [
   { path: 'login', component: AuthComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'musicians', component: MusiciansComponent },
-  { path: 'applications', component: ApplicationsComponent },
+  {
+    path: 'musicians',
+    component: MusiciansComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'applications',
+    component: ApplicationsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'tracks',
+    component: TracksComponent,
+  },
 ];
 
 @NgModule({

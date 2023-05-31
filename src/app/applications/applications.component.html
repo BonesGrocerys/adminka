@@ -1,6 +1,12 @@
 <my-header></my-header>
 <h1>Заявки</h1>
-
+<li *ngIf="!musicians?.length">
+  <div style="margin-top: 10px" class="seach-content">
+    <div style="display: flex">
+      <h3 style="display: flex">Ничего не найдено</h3>
+    </div>
+  </div>
+</li>
 <div *ngFor="let musician of musicians; let i = index">
   <div (click)="selectMusician(i)">
     <h2>{{ musician.nickname }}</h2>
@@ -9,6 +15,7 @@
 <div *ngIf="selectedMusician">
   <button (click)="selectedMusician = null">Назад</button>
   <img
+    style="width: 100px; height: 100px"
     [src]="getCoverUrl(selectedMusician?.musicianCover)"
     alt="Musician Cover"
   />

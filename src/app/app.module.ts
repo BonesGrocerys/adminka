@@ -11,6 +11,8 @@ import { AuthGuard } from './auth.guard';
 import { MusiciansModule } from './musicians/musicians.module';
 import { CommonModule } from '@angular/common';
 import { ApplicationsModule } from './applications/applications.module';
+import { TracksComponent } from './tracks/tracks.component';
+import { TracksModule } from './tracks/tracks.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +25,7 @@ import { ApplicationsModule } from './applications/applications.module';
     MusiciansModule,
     ApplicationsModule,
     CommonModule,
+    TracksModule,
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],

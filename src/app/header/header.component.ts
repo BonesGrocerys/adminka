@@ -25,4 +25,8 @@ export class HeaderComponent {
   goToApplications() {
     this.router.navigate(['/applications']);
   }
+
+  goToTracks() {
+    this.router.navigate(['/tracks']);
+  }
 }

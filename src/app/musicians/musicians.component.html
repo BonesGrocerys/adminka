@@ -1,5 +1,5 @@
 <my-header></my-header>
-<h1>Музыканты</h1>
+<h1>Управление музыкантами</h1>
 <div class="search-input">
   <input
     type="text"
@@ -34,6 +34,13 @@
           <div>id:{{ musician.id }}</div>
           <div style="margin-left: 20px">{{ musician.nickname }}</div>
         </h3>
+      </div>
+    </div>
+  </li>
+  <li *ngIf="!musicians?.length">
+    <div style="margin-top: 10px" class="seach-content">
+      <div style="display: flex">
+        <h3 style="display: flex">Ничего не найдено</h3>
       </div>
     </div>
   </li>
