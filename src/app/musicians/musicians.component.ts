@@ -11,18 +11,41 @@ import { IOperationResult } from '../Interfaces/OperationResult';
 export class MusiciansComponent {
   musicians: IMusicians[] = [];
   searchText: string = '';
+  isLoading = false;
   // selectedMusician: number | null | undefined;
   selectedMusician: IMusicians | null | undefined;
   constructor(private searchService: SearchService) {}
 
+  // search() {
+
+  //   this.searchService.getMusicians(this.searchText).subscribe((data: any) => {
+  //     if (data.success) {
+  //       this.musicians = data?.result?.result || [];
+  //     } else {
+  //       console.error(data.message);
+  //     }
+  //   });
+  // }
+
   search() {
-    this.searchService.getMusicians(this.searchText).subscribe((data: any) => {
-      if (data.success) {
-        this.musicians = data?.result?.result || [];
-      } else {
-        console.error(data.message);
-      }
-    });
+    try {
+      this.isLoading = true;
+      console.log(this.isLoading);
+      this.searchService
+        .getMusicians(this.searchText)
+        .subscribe((data: any) => {
+          if (data.success) {
+            this.musicians = data?.result?.result || [];
+          } else {
+            console.error(data.message);
+          }
+        });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      this.isLoading = false;
+      console.log(this.isLoading);
+    }
   }
 
   DeleteMusician() {
